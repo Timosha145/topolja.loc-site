@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Footballers List";
+    @model List<Footballer>
+
+}
+<h1>@ViewData["Title"]</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Birthday</th>
+            <th>Team</th>
+            <th>Country</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var footballer in Model)
+        {
+            <tr>
+                <td>@footballer.Id</td>
+                <td>@footballer.Name</td>
+                <td>@footballer.Gender</td>
+                <td>@footballer.Birthday</td>
+                <td>@footballer.Team.Name</td>
+                <td>@footballer.Country</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@footballer.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
