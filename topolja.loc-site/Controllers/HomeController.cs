@@ -78,5 +78,23 @@ namespace topolja.loc_site.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult CreateTeam()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateTeam(Team team)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Teams.Add(team);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(team);
+        }
     }
 }
